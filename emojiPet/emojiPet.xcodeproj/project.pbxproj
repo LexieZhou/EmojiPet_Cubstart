@@ -11,6 +11,9 @@
 		86338CD529F11C350007FE5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86338CD429F11C350007FE5F /* ContentView.swift */; };
 		86338CD729F11C370007FE5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86338CD629F11C370007FE5F /* Assets.xcassets */; };
 		86338CDA29F11C370007FE5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86338CD929F11C370007FE5F /* Preview Assets.xcassets */; };
+		86CB276329F3037800F7E8DE /* Kalam-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CB276029F3037700F7E8DE /* Kalam-Bold.ttf */; };
+		86CB276429F3037800F7E8DE /* Kalam-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CB276129F3037700F7E8DE /* Kalam-Light.ttf */; };
+		86CB276529F3037800F7E8DE /* Kalam-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CB276229F3037800F7E8DE /* Kalam-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,10 @@
 		86338CD429F11C350007FE5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		86338CD629F11C370007FE5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86338CD929F11C370007FE5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		86CB276029F3037700F7E8DE /* Kalam-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kalam-Bold.ttf"; sourceTree = "<group>"; };
+		86CB276129F3037700F7E8DE /* Kalam-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kalam-Light.ttf"; sourceTree = "<group>"; };
+		86CB276229F3037800F7E8DE /* Kalam-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kalam-Regular.ttf"; sourceTree = "<group>"; };
+		86CB276629F3044500F7E8DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,10 @@
 		86338CD129F11C350007FE5F /* emojiPet */ = {
 			isa = PBXGroup;
 			children = (
+				86CB276629F3044500F7E8DE /* Info.plist */,
+				86CB276029F3037700F7E8DE /* Kalam-Bold.ttf */,
+				86CB276129F3037700F7E8DE /* Kalam-Light.ttf */,
+				86CB276229F3037800F7E8DE /* Kalam-Regular.ttf */,
 				86338CD229F11C350007FE5F /* emojiPetApp.swift */,
 				86338CD429F11C350007FE5F /* ContentView.swift */,
 				86338CD629F11C370007FE5F /* Assets.xcassets */,
@@ -125,7 +136,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86CB276329F3037800F7E8DE /* Kalam-Bold.ttf in Resources */,
+				86CB276529F3037800F7E8DE /* Kalam-Regular.ttf in Resources */,
 				86338CDA29F11C370007FE5F /* Preview Assets.xcassets in Resources */,
+				86CB276429F3037800F7E8DE /* Kalam-Light.ttf in Resources */,
 				86338CD729F11C370007FE5F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +284,7 @@
 				DEVELOPMENT_TEAM = DJY49YYL9Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = emojiPet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +314,7 @@
 				DEVELOPMENT_TEAM = DJY49YYL9Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = emojiPet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
