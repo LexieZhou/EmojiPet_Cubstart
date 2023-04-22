@@ -19,9 +19,33 @@ var energy_bar = img30
 var happiness_bar = img70
 var img = "main_pet"
 
+// values
+var hunger = 0.3
+
 //store custom color
 struct CustomColor {
     static let btnColor = Color("btnColor")
+}
+
+//progress bar
+struct HorizontalProgressBar: View {
+    var progress: CGFloat // Progress value between 0 and 1
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .foregroundColor(Color.gray.opacity(0.5))
+                    .frame(width: geometry.size.width, height: 30)
+                    .cornerRadius(10)
+                Rectangle()
+                    .foregroundColor(.white)
+                    .frame(width: min(geometry.size.width * self.progress, geometry.size.width), height: 29)
+                    .cornerRadius(10)
+                 
+            }
+        }
+    }
 }
 
 //main page view
@@ -30,6 +54,8 @@ struct ContentView: View {
     @State private var showingSheet = false
     
     var body: some View {
+        
+    
         VStack(spacing: 5) {
             Text(dog_name)
                 .padding()
@@ -37,21 +63,24 @@ struct ContentView: View {
             Text("Hunger")
                 .font(.custom("Kalam-Regular", size: 20))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Image(hunger_bar)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            
+            HorizontalProgressBar(progress: hunger)
+
+//            Image(hunger_bar)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
             Text("Energy")
                 .font(.custom("Kalam-Regular", size: 20))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Image(energy_bar)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+//            Image(energy_bar)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
             Text("Happiness")
                 .font(.custom("Kalam-Regular", size: 20))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Image(happiness_bar)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+//            Image(happiness_bar)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
             Spacer()
             Button{
                 showingSheet.toggle()
@@ -72,6 +101,7 @@ struct ContentView: View {
                 .aspectRatio(contentMode: .fit)
         }
         .padding()
+        
     }
 }
 
