@@ -17,6 +17,7 @@ var dog_name = "Cookie"
 var hunger_bar = img10
 var energy_bar = img30
 var happiness_bar = img70
+var img = "main_pet"
 
 //store custom color
 struct CustomColor {
@@ -69,7 +70,6 @@ struct ContentView: View {
             Image("main_pet")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            
         }
         .padding()
     }
@@ -79,84 +79,171 @@ struct ContentView: View {
 struct Sheet: View {
     //call the dismiss function which closes the sheet view
     @Environment(\.dismiss) var dismiss
+    @State private var food = false
+    @State private var water = false
+    @State private var bath  = false
+    @State private var walk = false
+    @State private var nail = false
     
     var body: some View {
-        VStack(
-            alignment: .center
-        ){
-            HStack {
-                VStack(spacing: 2){
-                    Button{
-                        dismiss();
-                    } label: {
-                        Text("Back")
-                            .frame(width: 40, height: 40)
-                            .font(.custom("Kalam-Bold", size: 16))
-                            .foregroundColor(.black)
-                            .background(CustomColor.btnColor)
-                            .clipShape(Circle())
-                        
+        ZStack{
+            VStack(
+                alignment: .center
+            ){
+                HStack {
+                    VStack(spacing: 2){
+                        Button{
+                            dismiss();
+                            food = false
+                            water = false
+                        } label: {
+                            Text("Back")
+                                .frame(width: 40, height: 40)
+                                .font(.custom("Kalam-Bold", size: 16))
+                                .foregroundColor(.black)
+                                .background(CustomColor.btnColor)
+                                .clipShape(Circle())
+                            
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("Hunger")
+                            .font(.custom("Kalam-Regular", size: 20))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Image(hunger_bar)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Text("Energy")
+                            .font(.custom("Kalam-Regular", size: 20))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Image(energy_bar)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Text("Happiness")
+                            .font(.custom("Kalam-Regular", size: 20))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Image(happiness_bar)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }.padding()//Vstack
+                    Image(img)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }.padding()//Hstack
+                
+                Form {
+                    Button("Feed the dog food"){
+                        food = true
+                        water = false
+                        bath = false
+                        walk = false
+                        nail = false
+                    }.padding()
+                        .foregroundColor(.black)
+                        .fontDesign(.serif)//.sheet(isPresented: $sheet1){
+                    //Sheet()}
+                    
+                    Button("Feed the dog water"){
+                        water = true
+                        food = false
+                        bath = false
+                        walk = false
+                        nail = false
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("Hunger")
-                        .font(.custom("Kalam-Regular", size: 20))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Image(hunger_bar)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                    Text("Energy")
-                        .font(.custom("Kalam-Regular", size: 20))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Image(energy_bar)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                    Text("Happiness")
-                        .font(.custom("Kalam-Regular", size: 20))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Image(happiness_bar)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                }.padding()
-                Image("main_pet")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }.padding()
+                    .padding()
+                    .foregroundColor(.black)
+                    .fontDesign(.serif)
+                    Button("Bath the dog"){
+                        bath = true
+                        water = false
+                        food = false
+                        walk = false
+                        nail = false
+                    }
+                    .padding()
+                    .foregroundColor(.black)
+                    .fontDesign(.serif)
+                    Button("Walk the dog"){
+                        walk = true
+                        bath = false
+                        water = false
+                        food = false
+                        nail = false
+                    }
+                    .padding()
+                    .foregroundColor(.black)
+                    .fontDesign(.serif)
+                    Button("Nail the dog"){
+                        nail = true
+                        walk = false
+                        bath = false
+                        water = false
+                        food = false
+                    }
+                    .padding()
+                    .foregroundColor(.black)
+                    .fontDesign(.serif)
+                }.padding()//form
+            }//Vstack
             
-            
-            Form {
-                Button("Feed the dog food"){
-                }
-                    .padding()
-                    .foregroundColor(.black)
-                    .fontDesign(.serif)
-                Button("Feed the dog water"){
-                }
-                    .padding()
-                    .foregroundColor(.black)
-                    .fontDesign(.serif)
-                Button("Bath the dog"){
-                }
-                    .padding()
-                    .foregroundColor(.black)
-                    .fontDesign(.serif)
-                Button("Walk the dog"){
-                }
-                    .padding()
-                    .foregroundColor(.black)
-                    .fontDesign(.serif)
-                Button("Nail the dog"){
-                }
-                    .padding()
-                    .foregroundColor(.black)
-                    .fontDesign(.serif)
-            }.padding()
-        }
-    }
-
-}
-
+            if food{
+                 Image("food")
+                 .resizable()
+                 .frame(width: 100, height: 100)
+                 .position(x:320,y:200)
+                Image("loveHeart")
+                .resizable()
+                .frame(width: 80, height: 80)
+                .position(x:270,y:59)
+            }
+           if water{
+               Image("water")
+               .resizable()
+               .frame(width: 100, height: 100)
+               .position(x:320,y:200)
+              Image("loveHeart")
+              .resizable()
+              .frame(width: 80, height: 80)
+              .position(x:270,y:59)
+          }
+        if bath{
+            Image("bath")
+            .resizable()
+            .frame(width: 100, height: 100)
+            .position(x:320,y:200)
+           Image("loveHeart")
+           .resizable()
+           .frame(width: 80, height: 80)
+           .position(x:270,y:59)
+       }
+        if walk{
+            Image("walk")
+            .resizable()
+            .frame(width: 100, height: 100)
+            .position(x:320,y:200)
+           Image("loveHeart")
+           .resizable()
+           .frame(width: 80, height: 80)
+           .position(x:270,y:59)
+       }
+        if nail{
+            Image("nail")
+            .resizable()
+            .frame(width: 100, height: 100)
+            .position(x:320,y:200)
+           Image("loveHeart")
+           .resizable()
+           .frame(width: 80, height: 80)
+           .position(x:270,y:59)
+   }
+  }//Zstack
+ }//var body
+}//sheet
+    
+    
+    
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
