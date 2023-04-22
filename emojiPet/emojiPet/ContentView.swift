@@ -234,8 +234,18 @@ struct Sheet: View {
            .resizable()
            .frame(width: 80, height: 80)
            .position(x:270,y:59)
-   }
+        }
   }//Zstack
+        .onAppear {
+      // Schedule the image to be hidden after 3 seconds
+      Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+          self.food = false
+          self.water = false
+          self.bath = false
+          self.walk = false
+          self.nail = false
+      }
+    }//.onAppear
  }//var body
 }//sheet
     
