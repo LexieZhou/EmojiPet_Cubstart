@@ -20,7 +20,11 @@ var happiness_bar = img70
 var img = "main_pet"
 
 // values
-var hunger = 0.3
+var progress_bar_height_main = 35.0
+var hunger_color = Color.brown.opacity(0.7)
+var thirst_color = Color.blue.opacity(0.5)
+var energy_color = Color.green.opacity(0.7)
+var happiness_color = Color.red.opacity(0.6)
 
 //store custom color
 struct CustomColor {
@@ -29,9 +33,12 @@ struct CustomColor {
 
 //progress bar
 struct HorizontalProgressBar: View {
-    var progress: CGFloat // Progress value between 0 and 1
+    
+    @Binding var progress: Double // Progress value between 0 and 1
+    var barColor: Color
     
     var body: some View {
+        
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 Rectangle()
@@ -39,19 +46,42 @@ struct HorizontalProgressBar: View {
                     .frame(width: geometry.size.width, height: 30)
                     .cornerRadius(10)
                 Rectangle()
-                    .foregroundColor(.white)
-                    .frame(width: min(geometry.size.width * self.progress, geometry.size.width), height: 29)
+                    .foregroundColor(barColor)
+                    .frame(width: min(geometry.size.width * self.progress, geometry.size.width), height: 30)
                     .cornerRadius(10)
-                 
+                    .animation(.linear(duration: 0.5))
             }
         }
     }
 }
 
+
+// text and progress bar
+struct TextAndBar: View {
+    
+    var description: String
+    
+    @Binding var progress: Double // Progress value between 0 and 1
+    var barColor: Color
+    
+    var body: some View {
+        Text(description)
+            .font(.custom("Kalam-Regular", size: 20))
+            .frame(maxWidth: .infinity, alignment: .leading)
+        HorizontalProgressBar(progress: $progress, barColor: barColor)
+    }
+}
+
+
 //main page view
 struct ContentView: View {
     //showing sheet when button is clicked
     @State private var showingSheet = false
+    
+    @State var hunger = 0.3
+    @State var thirst = 0.3
+    @State var energy = 0.5
+    @State var happiness = 0.7
     
     var body: some View {
         
@@ -60,28 +90,21 @@ struct ContentView: View {
             Text(dog_name)
                 .padding()
                 .font(.custom("Kalam-Bold", size: 34))
-            Text("Hunger")
-                .font(.custom("Kalam-Regular", size: 20))
-                .frame(maxWidth: .infinity, alignment: .leading)
             
-            HorizontalProgressBar(progress: hunger)
-
-//            Image(hunger_bar)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-            Text("Energy")
-                .font(.custom("Kalam-Regular", size: 20))
-                .frame(maxWidth: .infinity, alignment: .leading)
-//            Image(energy_bar)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-            Text("Happiness")
-                .font(.custom("Kalam-Regular", size: 20))
-                .frame(maxWidth: .infinity, alignment: .leading)
-//            Image(happiness_bar)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
+            TextAndBar(description: "Hunger", progress: $hunger, barColor: hunger_color)
+                .frame(height: progress_bar_height_main)
+            
+            TextAndBar(description: "Thirst", progress: $thirst, barColor: thirst_color)
+                .frame(height: progress_bar_height_main)
+            
+            TextAndBar(description: "Energy", progress: $energy, barColor: energy_color)
+                .frame(height: progress_bar_height_main)
+            
+            TextAndBar(description: "Happiness", progress: $happiness, barColor: happiness_color)
+                .frame(height: progress_bar_height_main)
+            
             Spacer()
+            
             Button{
                 showingSheet.toggle()
             } label: {
@@ -94,7 +117,7 @@ struct ContentView: View {
             }
                 .padding()
                 .sheet(isPresented: $showingSheet) {
-                                    Sheet()
+                                    Sheet(hunger: $hunger, thirst: $thirst, energy: $energy, happiness: $happiness)
                 }
             Image("main_pet")
                 .resizable()
@@ -115,13 +138,19 @@ struct Sheet: View {
     @State private var walk = false
     @State private var nail = false
     
+    @Binding var hunger : Double
+    @Binding var thirst : Double
+    @Binding var energy : Double
+    @Binding var happiness : Double
+    
     var body: some View {
+        
         ZStack{
             VStack(
                 alignment: .center
             ){
                 HStack {
-                    VStack(spacing: 2){
+                    VStack(spacing: 2) {
                         Button{
                             dismiss();
                             food = false
@@ -136,24 +165,14 @@ struct Sheet: View {
                             
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("Hunger")
-                            .font(.custom("Kalam-Regular", size: 20))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Image(hunger_bar)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        Text("Energy")
-                            .font(.custom("Kalam-Regular", size: 20))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Image(energy_bar)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        Text("Happiness")
-                            .font(.custom("Kalam-Regular", size: 20))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Image(happiness_bar)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                        TextAndBar(description: "Hunger", progress: $hunger, barColor: hunger_color)
+
+                        TextAndBar(description: "Thirst", progress: $thirst, barColor: thirst_color)
+
+                        TextAndBar(description: "Energy", progress: $energy, barColor: energy_color)
+
+                        TextAndBar(description: "Happiness", progress: $happiness, barColor: happiness_color)
+                        
                     }.padding()//Vstack
                     Image(img)
                         .resizable()
@@ -167,6 +186,9 @@ struct Sheet: View {
                         bath = false
                         walk = false
                         nail = false
+                        
+                        hunger = min(1, hunger + 0.2)
+                        happiness = min(1, happiness + 0.1)
                     }.padding()
                         .foregroundColor(.black)
                         .fontDesign(.serif)//.sheet(isPresented: $sheet1){
@@ -178,6 +200,8 @@ struct Sheet: View {
                         bath = false
                         walk = false
                         nail = false
+                        
+                        thirst = min(1, thirst + 0.2)
                     }
                     .padding()
                     .foregroundColor(.black)
@@ -188,6 +212,9 @@ struct Sheet: View {
                         food = false
                         walk = false
                         nail = false
+                        
+                        energy = min(1, energy + 0.1)
+                        happiness = min(1, happiness + 0.1)
                     }
                     .padding()
                     .foregroundColor(.black)
@@ -198,6 +225,11 @@ struct Sheet: View {
                         water = false
                         food = false
                         nail = false
+                        
+                        hunger = max(0, hunger - 0.2)
+                        thirst = max(0, thirst - 0.1)
+                        energy = max(0, energy - 0.1)
+                        happiness = min(1, happiness + 0.1)
                     }
                     .padding()
                     .foregroundColor(.black)
@@ -208,6 +240,8 @@ struct Sheet: View {
                         bath = false
                         water = false
                         food = false
+                        
+                        happiness = max(0, happiness - 0.1)
                     }
                     .padding()
                     .foregroundColor(.black)
