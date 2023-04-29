@@ -11,6 +11,7 @@
 		86338CD529F11C350007FE5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86338CD429F11C350007FE5F /* ContentView.swift */; };
 		86338CD729F11C370007FE5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86338CD629F11C370007FE5F /* Assets.xcassets */; };
 		86338CDA29F11C370007FE5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86338CD929F11C370007FE5F /* Preview Assets.xcassets */; };
+		864BEA5929FCF6CE00E5E9C0 /* bgm2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 864BEA5829FCF6CE00E5E9C0 /* bgm2.mp3 */; };
 		86CB276329F3037800F7E8DE /* Kalam-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CB276029F3037700F7E8DE /* Kalam-Bold.ttf */; };
 		86CB276429F3037800F7E8DE /* Kalam-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CB276129F3037700F7E8DE /* Kalam-Light.ttf */; };
 		86CB276529F3037800F7E8DE /* Kalam-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CB276229F3037800F7E8DE /* Kalam-Regular.ttf */; };
@@ -22,6 +23,7 @@
 		86338CD429F11C350007FE5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		86338CD629F11C370007FE5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86338CD929F11C370007FE5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		864BEA5829FCF6CE00E5E9C0 /* bgm2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm2.mp3; sourceTree = "<group>"; };
 		86CB276029F3037700F7E8DE /* Kalam-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kalam-Bold.ttf"; sourceTree = "<group>"; };
 		86CB276129F3037700F7E8DE /* Kalam-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kalam-Light.ttf"; sourceTree = "<group>"; };
 		86CB276229F3037800F7E8DE /* Kalam-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kalam-Regular.ttf"; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				86CB276229F3037800F7E8DE /* Kalam-Regular.ttf */,
 				86338CD229F11C350007FE5F /* emojiPetApp.swift */,
 				86338CD429F11C350007FE5F /* ContentView.swift */,
+				864BEA5829FCF6CE00E5E9C0 /* bgm2.mp3 */,
 				86338CD629F11C370007FE5F /* Assets.xcassets */,
 				86338CD829F11C370007FE5F /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			files = (
 				86CB276329F3037800F7E8DE /* Kalam-Bold.ttf in Resources */,
 				86CB276529F3037800F7E8DE /* Kalam-Regular.ttf in Resources */,
+				864BEA5929FCF6CE00E5E9C0 /* bgm2.mp3 in Resources */,
 				86338CDA29F11C370007FE5F /* Preview Assets.xcassets in Resources */,
 				86CB276429F3037800F7E8DE /* Kalam-Light.ttf in Resources */,
 				86338CD729F11C370007FE5F /* Assets.xcassets in Resources */,

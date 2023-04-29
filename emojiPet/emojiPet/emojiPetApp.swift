@@ -11,7 +11,7 @@ import SwiftUI
 struct emojiPetApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            welcomePage()
         }
     }
 }
