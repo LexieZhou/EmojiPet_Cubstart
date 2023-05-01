@@ -75,44 +75,56 @@ struct mainPageView: View {
     
     
     var body: some View {
-        VStack(spacing: 5) {
-            Text(dog_name)
-                .padding()
-                .font(.custom("Kalam-Bold", size: 34))
-            
-            TextAndBar(description: "Hunger", progress: $hunger, barColor: hunger_color)
-                .frame(height: progress_bar_height_main)
-                
-            TextAndBar(description: "Thirst", progress: $thirst, barColor: thirst_color)
-                .frame(height: progress_bar_height_main)
-            
-            TextAndBar(description: "Energy", progress: $energy, barColor: energy_color)
-                .frame(height: progress_bar_height_main)
-            
-            TextAndBar(description: "Happiness", progress: $happiness, barColor: happiness_color)
-                .frame(height: progress_bar_height_main)
-            
-            Spacer()
-            
-            Button{
-                showingSheet.toggle()
-            } label: {
-                Text("Take Care of it")
-                    .font(.custom("Kalam-Bold", size: 20))
-                    .foregroundColor(.black)
-                    .frame(width: 160, height: 50)
-                    .background(CustomColor.btnColor)
-                    .cornerRadius(8)
-            }
-                .padding()
-                .sheet(isPresented: $showingSheet) {
-                                    Sheet(hunger: $hunger, thirst: $thirst, energy: $energy, happiness: $happiness)
+        NavigationView {
+            ZStack {
+                NavigationLink(destination: profilePageView().navigationBarBackButtonHidden(true)){
+                    Image("avatar")
+                        .resizable()
+                        .frame(width: 70, height: 70)
                 }
-            Image("main_pet")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+                .padding(.top)
+                .offset(x: 140, y: -350)
+                
+                VStack(spacing: 5) {
+                    Text(dog_name)
+                        .padding()
+                        .font(.custom("Kalam-Bold", size: 34))
+                    
+                    TextAndBar(description: "Hunger", progress: $hunger, barColor: hunger_color)
+                        .frame(height: progress_bar_height_main)
+                    
+                    TextAndBar(description: "Thirst", progress: $thirst, barColor: thirst_color)
+                        .frame(height: progress_bar_height_main)
+                    
+                    TextAndBar(description: "Energy", progress: $energy, barColor: energy_color)
+                        .frame(height: progress_bar_height_main)
+                    
+                    TextAndBar(description: "Happiness", progress: $happiness, barColor: happiness_color)
+                        .frame(height: progress_bar_height_main)
+                    
+                    Spacer()
+                    
+                    Button{
+                        showingSheet.toggle()
+                    } label: {
+                        Text("Take Care of it")
+                            .font(.custom("Kalam-Bold", size: 20))
+                            .foregroundColor(.black)
+                            .frame(width: 160, height: 50)
+                            .background(CustomColor.btnColor)
+                            .cornerRadius(8)
+                    }
+                    .padding()
+                    .sheet(isPresented: $showingSheet) {
+                        Sheet(hunger: $hunger, thirst: $thirst, energy: $energy, happiness: $happiness)
+                    }
+                    Image("main_pet")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .padding()
+            }
         }
-        .padding()
     }
 }
 

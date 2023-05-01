@@ -44,11 +44,7 @@ struct loginPageView: View {
                         .foregroundColor(.gray)
                         .textFieldStyle(.plain)
                         .autocapitalization(.none)
-//                        .placeholder(when: email.isEmpty){
-//                            Text("Email")
-//                                .foregroundColor(.gray)
-//                                .bold()
-//                        }
+
                     Rectangle()
                         .frame(width: 280, height: 1)
                         .foregroundColor(.gray)
@@ -57,11 +53,7 @@ struct loginPageView: View {
                         .foregroundColor(.gray)
                         .textFieldStyle(.plain)
                         .autocapitalization(.none)
-//                        .placeholder(when: password.isEmpty){
-//                            Text("Password")
-//                                .foregroundColor(.gray)
-//                                .bold()
-//                        }
+
                     Rectangle()
                         .frame(width: 280, height: 1)
                         .foregroundColor(.gray)

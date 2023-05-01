@@ -46,6 +46,7 @@
 		86DC379D29FDD68F00D8E74D /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 86DC379C29FDD68F00D8E74D /* FirebaseStorageCombine-Community */; };
 		86DC379F29FDE3A400D8E74D /* mainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC379E29FDE3A400D8E74D /* mainPageView.swift */; };
 		86DC37A129FDE50000D8E74D /* registerPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC37A029FDE50000D8E74D /* registerPageView.swift */; };
+		86F854C829FF3BA4007AB72A /* profilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F854C729FF3BA4007AB72A /* profilePageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		86DC376529FDD5F200D8E74D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86DC379E29FDE3A400D8E74D /* mainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageView.swift; sourceTree = "<group>"; };
 		86DC37A029FDE50000D8E74D /* registerPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerPageView.swift; sourceTree = "<group>"; };
+		86F854C729FF3BA4007AB72A /* profilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				86C4128629FE060B008755A4 /* loginPageView.swift */,
 				86DC37A029FDE50000D8E74D /* registerPageView.swift */,
 				86DC379E29FDE3A400D8E74D /* mainPageView.swift */,
+				86F854C729FF3BA4007AB72A /* profilePageView.swift */,
 				864BEA5829FCF6CE00E5E9C0 /* bgm2.mp3 */,
 				86338CD629F11C370007FE5F /* Assets.xcassets */,
 				86338CD829F11C370007FE5F /* Preview Content */,
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86338CD529F11C350007FE5F /* welcomePageView.swift in Sources */,
+				86F854C829FF3BA4007AB72A /* profilePageView.swift in Sources */,
 				86338CD329F11C350007FE5F /* emojiPetApp.swift in Sources */,
 				86DC379F29FDE3A400D8E74D /* mainPageView.swift in Sources */,
 				86DC37A129FDE50000D8E74D /* registerPageView.swift in Sources */,

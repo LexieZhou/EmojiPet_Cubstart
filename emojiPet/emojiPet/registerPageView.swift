@@ -50,11 +50,7 @@ struct registerPageView: View {
                         .foregroundColor(.gray)
                         .textFieldStyle(.plain)
                         .autocapitalization(.none)
-//                        .placeholder(when: email.isEmpty){
-//                            Text("Email")
-//                                .foregroundColor(.gray)
-//                                .bold()
-//                        }
+
                     Rectangle()
                         .frame(width: 280, height: 1)
                         .foregroundColor(.gray)
@@ -63,11 +59,7 @@ struct registerPageView: View {
                         .foregroundColor(.gray)
                         .textFieldStyle(.plain)
                         .autocapitalization(.none)
-//                        .placeholder(when: password.isEmpty){
-//                            Text("Password")
-//                                .foregroundColor(.gray)
-//                                .bold()
-//                        }
+
                     Rectangle()
                         .frame(width: 280, height: 1)
                         .foregroundColor(.gray)
@@ -131,18 +123,6 @@ struct registerPageView: View {
         
 }
 
-extension View {
-    func placeholder<Content: View>(
-        when shouldShow: Bool,
-        alignment: Alignment = .leading,
-        @ViewBuilder placeholder: () -> Content) -> some View {
-
-        ZStack(alignment: alignment) {
-            placeholder().opacity(shouldShow ? 1 : 0)
-            self
-        }
-    }
-}
 
 struct registerPageView_Previews: PreviewProvider {
     static var previews: some View {
