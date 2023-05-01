@@ -35,7 +35,7 @@ struct profilePageView: View {
                         .foregroundColor(.gray)
                     Button{} label: {
                         Text("Profile Setting")
-                            .font(.custom("Kalam-Regular", size: 30))
+                            .font(.custom("Kalam-Regular", size: 20))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.black)
                     }
@@ -43,19 +43,21 @@ struct profilePageView: View {
                     Rectangle()
                         .frame(width: 350, height: 1)
                         .foregroundColor(.gray)
-                    Button{} label: {
+                    
+                    NavigationLink(destination: mainPageView().navigationBarBackButtonHidden(true)){
                         Text("Owned Pets")
-                            .font(.custom("Kalam-Regular", size: 30))
+                            .font(.custom("Kalam-Regular", size: 20))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.black)
                     }
+                    
                     Rectangle()
                         .frame(width: 350, height: 1)
                         .foregroundColor(.gray)
                     HStack {
                         NavigationLink(destination: welcomePage().navigationBarBackButtonHidden(true)){
                             Text("Log Out")
-                                .font(.custom("Kalam-Regular", size: 30))
+                                .font(.custom("Kalam-Regular", size: 20))
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(.black)
                             Image("back")
@@ -72,7 +74,7 @@ struct profilePageView: View {
                         Image("pet2")
                             .resizable()
                             .frame(width: 180, height: 180)
-                            .offset(x: -90)
+                            .offset(x: -10)
                         Image("loveHeart")
                             .resizable()
                             .frame(width:120,height:100)
