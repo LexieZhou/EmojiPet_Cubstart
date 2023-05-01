@@ -82,7 +82,7 @@ struct welcomePage: View {
             }
         }
         .onAppear{
-            //startBackgroundMusic()
+            startBackgroundMusic()
         }
     }
 }

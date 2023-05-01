@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct profilePageView: View {
+    @State private var offset: CGFloat = 0.0
+    @State private var isMoveUp: Bool = true
     
     var body: some View {
         NavigationView {
@@ -33,7 +35,7 @@ struct profilePageView: View {
                         .foregroundColor(.gray)
                     Button{} label: {
                         Text("Profile Setting")
-                            .font(.custom("Kalam-Bold", size: 30))
+                            .font(.custom("Kalam-Regular", size: 30))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.black)
                     }
@@ -43,7 +45,7 @@ struct profilePageView: View {
                         .foregroundColor(.gray)
                     Button{} label: {
                         Text("Owned Pets")
-                            .font(.custom("Kalam-Bold", size: 30))
+                            .font(.custom("Kalam-Regular", size: 30))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.black)
                     }
@@ -53,7 +55,7 @@ struct profilePageView: View {
                     HStack {
                         NavigationLink(destination: welcomePage().navigationBarBackButtonHidden(true)){
                             Text("Log Out")
-                                .font(.custom("Kalam-Bold", size: 30))
+                                .font(.custom("Kalam-Regular", size: 30))
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(.black)
                             Image("back")
@@ -64,11 +66,34 @@ struct profilePageView: View {
                     Rectangle()
                         .frame(width: 350, height: 1)
                         .foregroundColor(.gray)
+                        .padding(.bottom, 70)
                     
-                }.padding(.bottom, 140)
+                    HStack {
+                        Image("pet2")
+                            .resizable()
+                            .frame(width: 180, height: 180)
+                            .offset(x: -90)
+                        Image("loveHeart")
+                            .resizable()
+                            .frame(width:120,height:100)
+                            .position(x:-50)
+                            .offset(y: offset)
+                            .animation(.easeInOut(duration: 1))
+                    }.onAppear{
+                        startAnimation()
+                    }
+                }
             }
         }
     }
+    func startAnimation() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                    withAnimation(Animation.easeInOut(duration: 0.5)) {
+                        offset = isMoveUp ? -20 : 18 // Set the desired vertical offset
+                    }
+                    isMoveUp.toggle()
+                }
+            }
 }
 
 struct profilePageView_Previews: PreviewProvider {
