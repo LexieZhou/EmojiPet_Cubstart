@@ -16,6 +16,9 @@ struct loginPageView: View {
     @State var email = ""
     @State var password = ""
     @State var successLogin = false
+    @State private var offset: CGFloat = 0.0
+    @State private var isMoveUp: Bool = true
+    @State private var showingUnsuccessAlert = false
     
     var body: some View {
         if (successLogin) {
@@ -75,23 +78,42 @@ struct loginPageView: View {
                             .background(.gray.opacity(0.4))
                             .cornerRadius(10)
                     }
+                    .alert("Unsuccessful Login", isPresented: $showingUnsuccessAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
                     .padding(.top)
                     .offset(y: 80)
-
-                    Image("puppy")
-                        .resizable()
-                        .frame(width: 180, height: 200)
-                        .padding(.top)
-                        .offset(x: -120, y: 80)
+                    
+                    NavigationLink(destination: registerPageView()){
+                        Text("No account? Register One!")
+                            .bold()
+                            .font(.custom("Kalam-Bold", size: 20))
+                            .foregroundColor(.black)
+                            .underline()
+                    }
+                    .padding(.top)
+                    .offset(y: 85)
+                    .frame(width: 350)
+                    
+                    HStack {
+                        Image("puppy")
+                            .resizable()
+                            .frame(width: 180, height: 200)
+                            .padding(.top)
+                            .offset(x: -50, y: 80)
+                        
+                        Image("stars")
+                            .resizable()
+                            .frame(width:100,height:100)
+                            .offset(x: -82, y: offset)
+                            .animation(.easeInOut(duration: 1))
+                    }
+                    .offset(y: 20)
+                    .onAppear{
+                        startAnimation()
+                    }
                 }
                 .frame(width: 280)
-//                .onAppear{
-//                    Auth.auth().addStateDidChangeListener{ auth, user in
-//                        if user != nil {
-//                            successLogin.toggle()
-//                        }
-//                    }
-//                }
             }
             .ignoresSafeArea()
         }
@@ -102,12 +124,22 @@ struct loginPageView: View {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 print(error?.localizedDescription ?? "")
+                showingUnsuccessAlert = true
             } else {
                 successLogin = true
                 print("success")
             }
         }
     }
+    
+    func startAnimation() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                    withAnimation(Animation.easeInOut(duration: 0.5)) {
+                        offset = isMoveUp ? -20 : 18 // Set the desired vertical offset
+                    }
+                    isMoveUp.toggle()
+                }
+            }
 }
 
 

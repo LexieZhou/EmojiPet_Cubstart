@@ -19,12 +19,18 @@ struct registerPageView: View {
     @State var successRegister = false
     @State private var showUnsucessAlert = false
     @State private var showSucessAlert = false
+    @State private var offset: CGFloat = 0.0
+    @State private var isMoveUp: Bool = true
 
 
     func register(){
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 print(error?.localizedDescription ?? "")
+                showUnsucessAlert = true
+            }
+            else {
+                showSucessAlert = true
             }
         }
     }
@@ -80,52 +86,48 @@ struct registerPageView: View {
                     }
                     .padding(.top)
                     .offset(y: 80)
-//                    .onSubmit {
-//                        if (!successRegister) {
-//                            showUnsucessAlert = true
-//                        } else {
-//                            showSucessAlert = true
-//                        }
-//                    }.alert("Unsucessful Register", isPresented: $showUnsucessAlert){
-//                        Button("Okay", role: .cancel){}
-//                    } message: {
-//                        Text("Unsucessful Register.")
-//                    }.alert("Register Successfully! Please go login!", isPresented: $showSucessAlert){
-//                        Button("Okay", role: .cancel){}
-//                    } message: {
-//                        Text("Register Successfully! Please go login!")
-//                    }
-                    
-                    NavigationLink(destination: loginPageView()){
-                        Text("Already have an account? Login")
-                            .bold()
-                            .font(.custom("Kalam-Bold", size: 20))
-                            .foregroundColor(.black)
-                            .underline()
+                    .alert("Unsucessful Register", isPresented: $showUnsucessAlert){
+                        Button("Okay", role: .cancel){}
                     }
-                    .padding(.top)
-                    .offset(y: 85)
-                    .frame(width: 350)
+                    .alert("Register Successfully!\nPlease go login!", isPresented: $showSucessAlert){
+                        Button("Okay", role: .cancel){}
+                    }
                     
-                    Image("puppy")
-                        .resizable()
-                        .frame(width: 180, height: 200)
-                        .padding(.top)
-                        .offset(x: -120, y: 80)
+                    HStack{
+                        
+                        Image("puppy")
+                            .resizable()
+                            .frame(width: 180, height: 200)
+                            .padding(.top)
+                            .offset(x: -50, y: 90)
+                        
+                        Image("stars")
+                            .resizable()
+                            .frame(width:100,height:100)
+                            .offset(x: -82, y: offset)
+                            .animation(.easeInOut(duration: 1))
+                    }
+                    .offset(y: 30)
+                    .onAppear{
+                        startAnimation()
+                    }
                 }
                 .frame(width: 280)
-//                .onAppear{
-//                    Auth.auth().addStateDidChangeListener{ auth, user in
-//                        if user != nil {
-//                            successRegister.toggle()
-//                        }
-//                    }
-//                }
+                    
             }
             .ignoresSafeArea()
         }
         
     }
+    
+    func startAnimation() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                    withAnimation(Animation.easeInOut(duration: 0.5)) {
+                        offset = isMoveUp ? -20 : 18 // Set the desired vertical offset
+                    }
+                    isMoveUp.toggle()
+                }
+            }
         
 }
 

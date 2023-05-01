@@ -49,7 +49,7 @@ struct welcomePage: View {
     
     var body: some View {
         NavigationView {
-            NavigationLink(destination: registerPageView().navigationBarBackButtonHidden(true)) {
+            NavigationLink(destination: loginPageView().navigationBarBackButtonHidden(true)) {
                 VStack{
                     Text("Welcome\nto\nEmoji Pet")
                         .font(.custom("Kalam-Bold", size: 40))
@@ -82,7 +82,7 @@ struct welcomePage: View {
             }
         }
         .onAppear{
-            startBackgroundMusic()
+            //startBackgroundMusic()
         }
     }
 }
