@@ -7,5 +7,8 @@ Final Project APP - IOS track
 
 
 
-https://user-images.githubusercontent.com/78584281/233292960-14b6b93e-5d38-4a59-8a73-8ef56428fffe.mp4
+https://user-images.githubusercontent.com/78584281/235775463-22ad11bf-3717-444e-ba78-e0d7dcef2241.mov
+
+
+
 
